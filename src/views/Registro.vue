@@ -14,7 +14,7 @@
              placeholder="ingrese su nuevamente "
              v-model="pass2"
              >
-             <button type="submit">Registra usuario</button>
+             <button type="submit" :disabled="!desactivar">Registra usuario</button>
         </form>
         <p>{{error}}</p>
     </div>
@@ -39,7 +39,10 @@ export default {
         ...mapActions(['crearUsuario'])
     },
     computed:{
-        ...mapState(['error'])
+        ...mapState(['error']),
+        desactivar(){
+            return this.pass1 === this.pass2 && this.pass1.trim() !== ''
+        }
     }
 }
 </script>
