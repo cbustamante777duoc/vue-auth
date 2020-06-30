@@ -1,7 +1,7 @@
 <template>
     <div>
         <h1>registro de usuarios</h1>
-        <form >
+        <form @submit.prevent="crearUsuario({email:email, password:pass1})" >
             <input type="email"
              placeholder="ingrese su correo"
              v-model="email"
@@ -16,10 +16,13 @@
              >
              <button type="submit">Registra usuario</button>
         </form>
+        <p>{{error}}</p>
     </div>
 </template>
 
 <script>
+import {mapActions, mapState} from 'vuex'
+
 export default {
     name:'Registro',
     data() {
@@ -29,5 +32,14 @@ export default {
             pass2:''
         }
     },
+    created(){
+
+    },
+    methods:{
+        ...mapActions(['crearUsuario'])
+    },
+    computed:{
+        ...mapState(['error'])
+    }
 }
 </script>
