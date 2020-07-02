@@ -40,6 +40,7 @@ export default {
     },
     computed:{
         ...mapState(['error']),
+        //metodo que desactiva el formulario si no son iguales los parametros
         desactivar(){
             return this.pass1 === this.pass2 && this.pass1.trim() !== ''
         }
