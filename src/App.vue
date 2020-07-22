@@ -2,11 +2,22 @@
   <div id="app">
     <div id="nav">
       <router-link to="/">Inicio</router-link> |
-      <router-link to="/registro">Registro</router-link>
+      <router-link to="/registro">Registro</router-link> |
+      <router-link to="/login">Login</router-link>
+      <button @click="cerrarSesion">Cerrar Sesion</button>
     </div>
     <router-view/>
   </div>
 </template>
+
+<script>
+import {mapActions} from 'vuex'
+export default {
+  methods:{
+    ...mapActions(['cerrarSesion'])
+  }
+}
+</script>
 
 <style>
 #app {

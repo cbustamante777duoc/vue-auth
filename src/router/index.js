@@ -14,6 +14,11 @@ Vue.use(VueRouter)
     path: '/',
     name: 'Inicio',
     component: () => import(/* webpackChunkName: "inicio" */ '../views/Inicio.vue')
+  },
+  {
+    path: '/login',
+    name: 'Login',
+    component: () => import(/* webpackChunkName: "login" */ '../views/Login.vue')
   }
 ]
 
