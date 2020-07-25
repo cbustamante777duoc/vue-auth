@@ -21,7 +21,21 @@ Vue.use(VueRouter)
     path: '/login',
     name: 'Login',
     component: () => import(/* webpackChunkName: "login" */ '../views/Login.vue')
-  }
+  },
+  {
+    path: '/editar/:id',
+    name: 'Editar',
+    component: () => import(/* webpackChunkName: "editar" */ '../views/Editar.vue'),
+    meta: { requiresAuth: true }
+},
+{
+  path: '/agregar',
+  name: 'Agregar',
+  component: () => import(/* webpackChunkName: "editar" */ '../views/Agregar.vue'),
+  meta: { requiresAuth: true }
+}
+
+
 ]
 
 const router = new VueRouter({
