@@ -1,6 +1,6 @@
 import Vue from "vue";
 import Vuex from "vuex";
-import { auth } from "../firebase";
+import { auth, db } from "../firebase";
 import router from "../router";
 
 Vue.use(Vuex);
@@ -33,11 +33,19 @@ export default new Vuex.Store({
           const usuarioCreado = {
             email: res.user.email,
             uid: res.user.uid,
-          };
-          //manda la informacion al metodo usuarioCreado
-          commit("setUsuario", usuarioCreado);
-          //luego que se agrega el usuario se manda a la ruta de inicio
-          router.push("/");
+          }
+
+          db.collection(res.user.email).add({
+            nombre:'tarea de ejemplo'
+          }).then(doc =>{
+             //manda la informacion al metodo usuarioCreado
+              commit("setUsuario", usuarioCreado);
+              //luego que se agrega el usuario se manda a la ruta de inicio
+              router.push("/");
+          }).catch(error => console.log(error)) 
+          
+          
+         
         })
         //manda la informacion al metodo setError
         .catch((error) => {
